@@ -61,8 +61,11 @@ const Navbar = () => {
             </Typography>
           </Box>
           
-          {/* Desktop Navigation */}
-          <Box className="flex-grow hidden md:flex justify-end space-x-2">
+          {/* Desktop Navigation - FIX: Switched to MUI sx prop for reliable display toggle */}
+          <Box 
+            className="flex-grow justify-end space-x-2"
+            sx={{ display: { xs: 'none', md: 'flex' } }} // Hidden on mobile (xs), visible on desktop (md)
+          >
             {NAV_ITEMS.map((item) => (
               <Button
                 key={item.name}
@@ -74,7 +77,7 @@ const Navbar = () => {
             ))}
           </Box>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Correctly controlled by MUI sx prop */}
           <Box sx={{ display: { xs: 'flex', md: 'none' }, flexGrow: 1, justifyContent: 'flex-end' }}>
             <IconButton
               color="inherit"
